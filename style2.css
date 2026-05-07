@@ -1,18 +1,26 @@
-   * {
+  /* ─────────────────────────────────────────────
+           RESET
+           Browsers apply their own default spacing.
+           This removes all that so we start fresh.
+        ───────────────────────────────────────────── */
+        * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            box-sizing: border-box; /* padding/border count INSIDE the element's width, not outside */
         }
 
+     
         html {
             scroll-behavior: smooth;
         }
 
+     
         body {
-            min-height: 100vh;
+            min-height: 100vh;            /* at least full viewport height */
             color: white;
             font-family: 'DM Sans', sans-serif;
             font-weight: 300;
+
             background: repeating-linear-gradient(
                 -45deg,
                 rgb(43, 33, 47) 10px 20px,
@@ -21,23 +29,28 @@
             background-attachment: fixed;
         }
 
+
+
+      
         .home {
             padding: 80px 60px 60px;
-            min-height: 100vh;
+            min-height: 100vh;           /* fills the screen on first load */
             display: flex;
             flex-direction: column;
             justify-content: center;
-            gap: 48px;
+            gap: 48px;                   /* space between top row and buttons */
         }
 
+        /* Row containing the name card + photo */
         .home-top {
             display: flex;
             align-items: center;
             gap: 48px;
         }
 
+        /* The purple card behind the name */
         #gradient {
-            flex: 1;
+            flex: 1;                     /* takes all remaining width beside the photo */
             background: repeating-linear-gradient(
                 45deg,
                 rgb(0, 0, 0) 1px 1px,
@@ -47,6 +60,7 @@
             border-radius: 16px;
         }
 
+        /* "Portfolio" small label above the name */
         .home-label {
             font-size: 12px;
             letter-spacing: 3px;
@@ -57,7 +71,7 @@
 
         #gradient h1 {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(40px, 6vw, 72px);
+            font-size: clamp(40px, 6vw, 72px); /* scales with viewport width, min 40px max 72px */
             font-weight: 800;
             letter-spacing: -1.5px;
             line-height: 1;
@@ -65,6 +79,7 @@
             margin-bottom: 20px;
         }
 
+       
         #gradient ul {
             list-style: none;
             padding: 0;
@@ -75,10 +90,11 @@
             font-weight: 300;
             color: rgba(200, 185, 215, 0.75);
             padding-left: 16px;
-            position: relative;
+            position: relative;         /* needed for the ::before dash */
             line-height: 1.9;
         }
 
+        /* This inserts the "—" dash before each list item */
         #gradient ul li::before {
             content: '—';
             position: absolute;
@@ -86,8 +102,9 @@
             color: rgba(140, 80, 180, 0.5);
         }
 
+        /* Card that holds the profile photo */
         #me {
-            flex-shrink: 0;
+            flex-shrink: 0;             /* don't let the photo shrink if space is tight */
             background: repeating-linear-gradient(
                 rgb(0, 0, 0) 1px 1px,
                 rgb(47, 7, 84) 100px 4px
@@ -99,6 +116,7 @@
             justify-content: center;
         }
 
+        /* The circular profile image */
         #me img {
             border-radius: 50%;
             border: 2px solid rgba(140, 80, 180, 0.35);
@@ -112,10 +130,15 @@
             box-shadow: 0 0 50px rgba(120, 40, 180, 0.55);
         }
 
+
+        /* ─────────────────────────────────────────────
+           NAV BUTTONS
+           The row of pill-shaped navigation buttons.
+        ───────────────────────────────────────────── */
         .buttons {
             display: flex;
             gap: 16px;
-            flex-wrap: wrap;
+            flex-wrap: wrap;             /* wrap to next line on small screens */
         }
 
         .btn {
@@ -124,10 +147,10 @@
             font-weight: 500;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            text-decoration: none;
+            text-decoration: none;       /* removes default underline on <a> */
             color: rgba(220, 200, 240, 0.9);
             padding: 12px 30px;
-            border-radius: 999px;
+            border-radius: 999px;        /* pill shape */
             border: 1px solid rgba(140, 80, 180, 0.4);
             background: rgba(80, 20, 120, 0.2);
             transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
@@ -135,14 +158,15 @@
 
         .btn:hover {
             background: rgba(110, 40, 160, 0.4);
-            transform: translateY(-3px);
+            transform: translateY(-3px); /* lifts the button slightly */
             box-shadow: 0 0 18px rgba(120, 40, 180, 0.4);
         }
 
         .btn:active {
-            transform: translateY(0);
+            transform: translateY(0);    /* button "presses" back down on click */
         }
 
+        /* The "Contact Me" button has a stronger purple tint */
         .btn-contact {
             background: rgba(120, 50, 180, 0.35);
             border-color: rgba(160, 100, 220, 0.6);
@@ -154,9 +178,14 @@
             box-shadow: 0 0 22px rgba(150, 60, 210, 0.5);
         }
 
+
+        /* ══════════════════════════════════════════
+           ABOUT SECTION
+        ══════════════════════════════════════════ */
+
         #about {
             padding: 0 60px;
-            scroll-margin-top: 40px;
+            scroll-margin-top: 40px;    /* when jumped to via anchor link, leaves 40px gap at top */
         }
 
         #box {
@@ -165,7 +194,7 @@
             font-weight: 300;
             max-width: 720px;
             padding: 60px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-top: 1px solid rgba(255, 255, 255, 0.06); /* subtle divider line */
         }
 
         #box h1 {
@@ -181,10 +210,15 @@
             color: rgba(200, 188, 218, 0.85);
         }
 
+
+        /* ══════════════════════════════════════════
+           SKILLS SECTION
+        ══════════════════════════════════════════ */
+
         .skills {
             background-color: rgba(0, 0, 0, 0.5);
             padding: 36px;
-            margin: 60px 60px 0;
+            margin: 60px 60px 0;         /* top, left+right, bottom margins */
             border-radius: 15px;
             scroll-margin-top: 40px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -198,12 +232,14 @@
             margin-bottom: 24px;
         }
 
+        /* Flexbox row of skill pill tags */
         .skills-grid {
             display: flex;
             flex-wrap: wrap;
             gap: 14px;
         }
 
+        /* Individual skill pill (Java, Python, etc.) */
         .skill-tag {
             font-family: 'DM Sans', sans-serif;
             font-size: 15px;
@@ -217,16 +253,23 @@
             transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
         }
 
+        /* The whole skills card lifts on hover */
         .skills:hover {
             transform: translateY(-6px);
             box-shadow: 0 0 20px rgba(87, 22, 103, 0.6), 0 0 40px rgba(39, 13, 49, 0.6);
         }
 
+        /* Individual skill tags also lift on hover */
         .skill-tag:hover {
             transform: translateY(-4px);
             box-shadow: 0 0 14px rgba(120, 40, 180, 0.4);
             background: rgba(110, 55, 155, 0.4);
         }
+
+
+        /* ══════════════════════════════════════════
+           PROJECTS SECTION
+        ══════════════════════════════════════════ */
 
         .project {
             background-color: rgba(0, 0, 0, 0.5);
@@ -253,8 +296,8 @@
         }
 
         .project img {
-            display: block;
-            margin: 10px auto 0;
+            display: block;             /* removes bottom gap images have by default */
+            margin: 10px auto 0;        /* centered horizontally */
             border-radius: 10px;
             border: 1px solid rgba(140, 80, 180, 0.25);
         }
@@ -263,6 +306,11 @@
             transform: translateY(-6px);
             box-shadow: 0 0 20px rgba(87, 22, 103, 0.6), 0 0 40px rgba(39, 13, 49, 0.6);
         }
+
+
+        /* ══════════════════════════════════════════
+           CONTACT SECTION
+        ══════════════════════════════════════════ */
 
         .contact {
             background-color: rgba(0, 0, 0, 0.5);
@@ -294,6 +342,7 @@
             margin-bottom: 28px;
         }
 
+        /* Gmail pill button */
         .mail-btn {
             display: inline-flex;
             align-items: center;
@@ -316,6 +365,12 @@
             box-shadow: 0 0 20px rgba(140, 60, 200, 0.4);
         }
 
+
+        /* ──────────────────────────────────────────
+           SOCIAL ICONS (fixed bottom-right corner)
+           position: fixed means they stay in the
+           same spot even as the page scrolls.
+        ─────────────────────────────────────────── */
         .social {
             position: fixed;
             bottom: 16px;
@@ -323,28 +378,38 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
+            z-index: 100;               /* stays on top of everything else */
         }
 
         .social img {
             border-radius: 8px;
-            filter: brightness(0.8);
+            filter: brightness(0.8);    /* slightly dimmed by default */
             transition: transform 0.2s ease, filter 0.2s ease;
             display: block;
         }
 
         .social img:hover {
             transform: translateY(-4px) scale(1.1);
-            filter: brightness(1.2);
+            filter: brightness(1.2);    /* brightens on hover */
         }
 
+
+        /* ──────────────────────────────────────────
+           RESPONSIVE — MOBILE (<640px wide)
+           On small screens, switch to a single-column
+           layout and reduce padding so content fits.
+        ─────────────────────────────────────────── */
         @media (max-width: 640px) {
             .home {
                 padding: 60px 24px 40px;
             }
+
+            /* Stack photo above the name card on mobile */
             .home-top {
                 flex-direction: column-reverse;
             }
+
+            /* Reduce side margins on smaller sections */
             #about,
             .skills,
             .project,
@@ -353,6 +418,7 @@
                 margin-right: 24px;
                 padding: 28px;
             }
+
             #about {
                 padding: 40px 0;
             }
